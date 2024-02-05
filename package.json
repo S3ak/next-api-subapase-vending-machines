@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:e2e": "npx cypress open",
+    "test:e2e:headless": "npx cypress run"
   },
   "dependencies": {
     "react": "^18",
@@ -14,6 +16,9 @@
     "next": "14.1.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.0",
+    "bcrypt": "^5.1.1",
+    "cypress": "^13.6.4",
     "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",

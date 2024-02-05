@@ -1,3 +1,10 @@
+## Links
+
+- [Production deploy](api-gateway-next-e0lquu0al-seak.vercel.app)
+- [Staging deploy](TODO) #TODO
+- [API URL](https://api-gateway-next-e0lquu0al-seak.vercel.app/api)
+- [Docs]()
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
