@@ -8,25 +8,39 @@
     "start": "next start",
     "lint": "next lint",
     "test:e2e": "npx cypress open",
-    "test:e2e:headless": "npx cypress run"
+    "test:e2e:headless": "npx cypress run",
+    "drizzle:generate": "drizzle-kit generate:pg",
+    "drizzle:push": "drizzle-kit push:pg",
+    "drizzle:seed": "node --loader esbuild-register/loader -r esbuild-register ./scripts/seed.js"
   },
   "dependencies": {
+    "@dotenvx/dotenvx": "^0.14.0",
+    "@supabase/supabase-js": "^2.39.3",
+    "dotenv": "^16.4.1",
+    "drizzle-orm": "^0.29.3",
+    "drizzle-zod": "^0.5.1",
+    "next": "14.1.0",
+    "postgres": "^3.4.3",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.1.0"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.0",
-    "bcrypt": "^5.1.1",
-    "cypress": "^13.6.4",
-    "typescript": "^5",
     "@types/node": "^20",
+    "@types/pg": "^8.11.0",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "bcrypt": "^5.1.1",
+    "cypress": "^13.6.4",
+    "drizzle-kit": "^0.20.14",
+    "esbuild-register": "^3.5.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "pg": "^8.11.3",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.0"
+    "typescript": "^5"
   }
 }

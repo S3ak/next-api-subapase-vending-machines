@@ -1,6 +1,6 @@
-import { getLatestProducts, createProduct } from "./data";
+import { getLatestProducts, createProduct } from "./actions";
 export const dynamic = "force-dynamic"; // defaults to auto
-import { Product } from "./definitions";
+import { API_RESPONSE_MESSAGES } from "../../libs/constants";
 
 export async function GET(request: Request) {
   // const headers = new Headers();
@@ -16,31 +16,32 @@ export async function GET(request: Request) {
 
     return Response.json({
       message: res.message,
-      data: res.data?.rows,
-      count: res.data?.rowCount,
+      data: res.data,
+      count: res.data.length,
     });
   } catch (error) {
-    return Response.json("Error", { status: 400 });
+    return Response.json(API_RESPONSE_MESSAGES.error.read, { status: 400 });
   }
 }
 
 export async function POST(request: Request) {
-  const headers = new Headers();
-  headers.append("Content-Type", "application/json");
-  // headers.append("API-Key", process.env.DATA_API_KEY || "");
-
-  const data = await request.json();
+  const payload = await request.json();
 
   try {
-    const res = await createProduct(data);
-    if (!res.data) throw new Error("No data found");
-    console.log("res", res);
+    const { data, message } = await createProduct(payload);
+
+    if (!data) throw new Error("No data found");
 
     return Response.json({
-      message: res.message,
-      data: res.data?.rows,
+      message: message,
+      data,
     });
-  } catch (error) {
-    return Response.json("Error", { status: 400 });
+  } catch (error: Error) {
+    console.warn("error in POST ????", error);
+
+    return Response.json(
+      `${API_RESPONSE_MESSAGES.error.create} ${error?.message}`,
+      { status: 400 }
+    );
   }
 }
