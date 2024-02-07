@@ -9,7 +9,7 @@ export async function GET(request: Request) {
   const count = Number(request.headers.get("count"));
 
   try {
-    const res = await getLatestProducts(count);
+    const res = await getLatestProducts(count, {});
     console.log("res", res);
 
     if (!res.data) throw new Error("No data found");

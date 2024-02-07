@@ -1,6 +1,8 @@
 import { API_RESPONSE_MESSAGES } from "../../libs/constants";
 import supabase from "../../libs/supabase";
 
+const client = supabase;
+
 /**
  * Retrieves the latest products from the database. This is the preferred method for retrieving products.
  *
@@ -9,7 +11,7 @@ import supabase from "../../libs/supabase";
  * @returns An object containing a success message and the retrieved products.
  * @throws An error if there was an issue retrieving the products.
  */
-export async function getLatestProducts(count = 30, { client = supabase }) {
+export async function getLatestProducts(count = 30) {
   const maxCount = Math.min(count, 100);
   const pageNumber = 1;
   const offset = (pageNumber - 1) * maxCount;
@@ -36,7 +38,7 @@ export async function getLatestProducts(count = 30, { client = supabase }) {
  * @returns A promise that resolves to an object containing the success message and the created product data.
  * @throws If there is an error during the database operation.
  */
-export async function createProduct(product: Product, { client = supabase }) {
+export async function createProduct(product: Product) {
   try {
     const { data, error } = await client
       .from("products")
