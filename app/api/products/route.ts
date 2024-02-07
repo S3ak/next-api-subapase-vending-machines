@@ -36,12 +36,9 @@ export async function POST(request: Request) {
       message: message,
       data,
     });
-  } catch (error: Error) {
-    console.warn("error in POST ????", error);
-
-    return Response.json(
-      `${API_RESPONSE_MESSAGES.error.create} ${error?.message}`,
-      { status: 400 }
-    );
+  } catch (error: unknown) {
+    return Response.json(`${API_RESPONSE_MESSAGES.error.create} ${error}`, {
+      status: 400,
+    });
   }
 }
