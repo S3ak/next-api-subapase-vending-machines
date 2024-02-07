@@ -13,6 +13,7 @@ export const API_RESPONSE_MESSAGES = {
   },
   notFound: "Error: Resource not found. |",
   validationError: "Error: Validation failed. |",
+  // Client needs authorization to access the resource.
   unauthorized: "Error: You are not authorized to perform this action. |",
   forbidden: "Error: You do not have permission to access this resource. |",
   serverError: "Error: An unexpected error occurred on the server. |",
